@@ -1,7 +1,7 @@
 # GoldenGate Plating
 
-A personal Ruby on Rails web application for practice
-Go to Hompage: ([golden-gate-jlee257.herokuapp.com](linkto:golden-gate-jlee257.herokuapp.com))
+A personal Ruby on Rails web application for practice.\n
+Go to Hompage: ([golden-gate-jlee257.herokuapp.com](https://golden-gate-jlee257.herokuapp.com))
 
 ## Author
 
