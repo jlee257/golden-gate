@@ -1,0 +1,24 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#goldenGateNavbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">GoldenGate GoldPlating</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="goldenGateNavbar">
+      <ul class="nav navbar-nav">
+        <li <% if current_page?(iwatch_path) || current_page?(root_path) || (params[:action] == 'show' && @product.category=="iwatch") %>class="active"<% end %>><%= link_to "iWatch", iwatch_path %></li>
+        <li <% if current_page?(iphone_path) || (params[:action] == 'show' && @product.category=="iphone") %>class="active"<% end %>><%= link_to "iPhone", iphone_path %></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Contact</a></li>
+      </ul>
+    <div>
+  </div>
+</nav>

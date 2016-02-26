@@ -1,0 +1,58 @@
+<div id="goldenGateCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <li data-target="#goldenGateCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#goldenGateCarousel" data-slide-to="1"></li>
+    <li data-target="#goldenGateCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <img class="img-responsive" src=<%= asset_path "iphone0b.jpg" %>>
+      <div class="carousel-caption">
+        <h2>Doesn't Matter When</h2>
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-responsive" src=<%= asset_path "iphone1b.jpg" %>>
+      <div class="carousel-caption">
+        <h2>We Don't Even Have to Try</h2>
+      </div>
+    </div>
+    <div class="item">
+      <img class="img-responsive" src=<%= asset_path "iphone2b.jpg" %>>
+      <div class="carousel-caption">
+        <h2>It's Always a Good Time</h2>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-12">
+      <h1>iPhone</h1>
+    </div>
+    <div class="col-lg-8 col-md-12">
+      <div class="row">
+        <% @products.each do |product| %>
+          
+          <div class="col-sm-6">
+            <%= link_to product do %>
+              <div class="panel panel-default center">
+                <div class="panel-heading">
+                  <img class="img-responsive" src=<%= asset_path getImageName(product) %>>
+                </div>
+                <div class="panel-body">
+                  <h4><%= product.title %><h4>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

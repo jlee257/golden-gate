@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row">
+    <br><br>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <img class="img-responsive" src=<%= asset_path getImageName(@product) %>>
+    </div>
+    <div class="col-md-7">
+      <p>
+        <h1><strong><%= @product.title %></strong></h1>
+        <br>
+      </p>
+      <p>
+        <h5><%= @product.description %></h5>
+      </p>
+
+      <p>
+        <h2>
+          <br>
+          <strong>Price:</strong>
+          <%= number_to_currency(@product.price) %>
+        </h2>
+      </p>
+
+      <p>
+        <h2>
+          <br>
+          <strong>Rating:</strong>
+          <%= "%01.1f" % @product.rating %>
+        </h2>
+      </p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <!-- <%= link_to 'Edit', edit_product_path(@product) %> |-->
+    <% if @product.category == "iwatch" %>
+      <%= link_to iwatch_path, class: 'btn btn-warning btn-md' do %>
+        <i class="glyphicon glyphicon-chevron-left"></i> Back
+      <% end %>
+    <% elsif @product.category == "iphone" %>
+      <%= link_to iphone_path, class: 'btn btn-warning btn-md' do %>
+        <i class="glyphicon glyphicon-chevron-left"></i> Back
+      <% end %>
+    <% end %>
+  </div>
+  <br>
+</div>
+
+
+
+
+<div class="container">
+  <div class="row jumbotron">
+    <h3>New Comment</h3>
+    <% @new_comment = Comment.new %>
+    <%= form_for(@new_comment, html: {class: 'form'}) do |f| %>
+      <% if @new_comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@new_comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+          <% @new_comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="field form-group">
+        <%= f.label "Comment" %><br>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+
+      <div class="row">
+        <div class="dropdown col-sm-10">
+          <%= f.label :rating %><br>
+          <%= f.select(:rating, {}, {}, {class: "btn btn-warning dropdown-toggle"}) do %>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★</option>
+            <option value="3">★★★</option>
+            <option value="2">★★</option>
+            <option value="1">★</option>
+          <% end %>
+        </div>
+        <%= hidden_field_tag :product_id, @product.id %> 
+        <div class="actions col-sm-2">
+          <%= f.submit 'Add Comment', class: 'btn btn-warning pull-right top-pad-23' %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="row">
+    <% @comments.each do |comment| %>
+      <p>
+        <strong><%= comment.name %></strong>
+        | Rating: <%= comment.rating %>
+        | <%= comment.created_at %>
+      </p>
+
+      <p>
+        <%= comment.description %>
+      </p>
+      <hr>
+    <% end %>
+  </div>
+</div>
